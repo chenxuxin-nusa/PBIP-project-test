@@ -1,0 +1,44 @@
+createOrReplace
+
+	ref table A_Measurement
+
+		measure FV_Discount_Rate =
+				CALCULATE(
+				    SUM(f_simulation_output_metric[metric_value]),
+				    f_simulation_output_metric[metric_name] = "FV_DISCOUNT_RATE"
+				)
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: FV Discount Rates
+			lineageTag: fv010001-0001-4001-8001-000000000002
+
+		measure FV_Discount_Rate_Verification = 1 - [FV_Expected_Loss_Rate]
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: FV Discount Rates
+			lineageTag: fv010001-0001-4001-8001-000000000003
+
+		measure FV_Expected_Loss_Rate =
+				CALCULATE(
+				    SUM(f_simulation_output_metric[metric_value]),
+				    f_simulation_output_metric[metric_name] = "EXPECTED_LOSS_RATE"
+				)
+			formatString: 0.0%;-0.0%;0.0%
+			displayFolder: FV Discount Rates
+			lineageTag: fv010001-0001-4001-8001-000000000001
+
+		measure FV_Loss_Rate_Change_MoM =
+				VAR CurrentMonth = [FV_Expected_Loss_Rate]
+				VAR PriorMonth =
+				    CALCULATE(
+				        [FV_Expected_Loss_Rate],
+				        DATEADD(d_dates[Date], -1, MONTH)
+				    )
+				RETURN
+				    IF(
+				        NOT ISBLANK(CurrentMonth) && NOT ISBLANK(PriorMonth),
+				        CurrentMonth - PriorMonth,
+				        BLANK()
+				    )
+			formatString: +0.0%;-0.0%;0.0%
+			displayFolder: FV Discount Rates
+			lineageTag: fv010001-0001-4001-8001-000000000004
+

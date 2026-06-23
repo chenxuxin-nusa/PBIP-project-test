@@ -1,0 +1,529 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Tenor",
+  "name": "81edf09b000193d3ee70",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "31a66b8acc509033b960",
+      "ca81268b2d8b74e0ccec",
+      "551339cc1b6bd66c5e87",
+      "1aab2581d254743c0d02",
+      "9ffd00d04e070b0c5e8d",
+      "795dc69a961824670c33",
+      "40f4c9b92ee36c3ac55a"
+    ],
+    "suppressActiveSection": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ff7c916db256310b92c7",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "ea8672949ab8144799f4",
+          "type": "Categorical",
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "d_simulated_abs"
+                }
+              },
+              "Property": "status"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "sections": {
+      "ff7c916db256310b92c7": {
+        "visualContainers": {
+          "043afa47260c1650559b": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "0aac4d557a91a7feafe1": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "5597d516010de0526e0e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_simulated_abs"
+                        }
+                      },
+                      "Property": "name"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "selection": [
+                    {
+                      "properties": {
+                        "strictSingleSelect": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "false"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_simulated_abs"
+                        }
+                      },
+                      "Property": "name"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "19472030c7c26f0d66e2": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c84ed4b55210dc160b58",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_rule_definition"
+                        }
+                      },
+                      "Property": "rule_id"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7e02399f669ed100924c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_rule_definition"
+                        }
+                      },
+                      "Property": "description"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8b99fa73671c97871120",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_rule_definition"
+                        }
+                      },
+                      "Property": "rule_type"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d720c7055c902e76d0e9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_rule_definition"
+                        }
+                      },
+                      "Property": "operator"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a56a90343853ee2541b2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "f_sim_output_covenant_check_rule_definition"
+                            }
+                          },
+                          "Property": "threshold"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a5934f1f9c1404758d2e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_rule_definition"
+                        }
+                      },
+                      "Property": "scope"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          },
+          "4df8ba254545eb1a8b14": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "d7fa2e8bc6e17bb71ee8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b64ea5393b108d6ca94a",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_dates"
+                        }
+                      },
+                      "Property": "endofmonth"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "91a394a2121ab287c928",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_dates"
+                        }
+                      },
+                      "Property": "dashboard_month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "3f99803a6314b0e56708",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_heat_map"
+                        }
+                      },
+                      "Property": "covenant_rule"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f10cc8b79dc236a05ed6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_heat_map"
+                        }
+                      },
+                      "Property": "threshold"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "67dc3da55c93113242e0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_heat_map"
+                        }
+                      },
+                      "Property": "operator"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c582f08c8b336d0732b7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "A_Measurement"
+                        }
+                      },
+                      "Property": "cond_actual_value"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f9a3379073d26b97b47c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_rule_partner"
+                        }
+                      },
+                      "Property": "partner_or_tenor"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "pivotTable",
+              "objects": {},
+              "activeProjections": {
+                "Columns": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_dates"
+                        }
+                      },
+                      "Property": "dashboard_month"
+                    }
+                  }
+                ],
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_heat_map"
+                        }
+                      },
+                      "Property": "covenant_rule"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_heat_map"
+                        }
+                      },
+                      "Property": "threshold"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "f_sim_output_covenant_check_heat_map"
+                        }
+                      },
+                      "Property": "operator"
+                    }
+                  }
+                ]
+              },
+              "expansionStates": [
+                {
+                  "roles": [
+                    "Rows"
+                  ],
+                  "levels": [
+                    {
+                      "queryRefs": [
+                        "f_sim_output_covenant_check_heat_map.covenant_rule"
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "f_sim_output_covenant_check_heat_map.threshold"
+                      ],
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "f_sim_output_covenant_check_heat_map.operator"
+                      ],
+                      "isCollapsed": true,
+                      "isPinned": true
+                    },
+                    {
+                      "queryRefs": [
+                        "f_sim_output_covenant_check_rule_partner.partner_or_tenor"
+                      ],
+                      "isCollapsed": true
+                    }
+                  ],
+                  "root": {
+                    "identityValues": []
+                  }
+                }
+              ]
+            }
+          },
+          "eddb4c3878a0245870fb": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "09412862e180c731c3d0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_simulated_abs"
+                        }
+                      },
+                      "Property": "current_simulation_date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_simulated_abs"
+                        }
+                      },
+                      "Property": "current_simulation_date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "d_simulated_abs"
+                        }
+                      },
+                      "Property": "current_simulation_date"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "31a66b8acc509033b960": {
+            "children": {
+              "ca81268b2d8b74e0ccec": {
+                "isHidden": false
+              },
+              "9ffd00d04e070b0c5e8d": {
+                "isHidden": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

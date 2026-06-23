@@ -1,0 +1,83 @@
+relationship 0ebc8304-d008-4ca8-3ef9-7d1a3971c36a
+	relyOnReferentialIntegrity
+	fromColumn: d_abs_trache.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 3620ecee-a16f-24d3-7c76-40e89cf7457f
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_summary_executive_summary.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship d7fe18ba-b46e-d283-d508-5de6886ebceb
+	relyOnReferentialIntegrity
+	fromColumn: f_sim_output_covenant_check_rule_definition.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 4253ceaa-89dc-8e96-cf05-3858cdcfd0f5
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_metric_portfolio_performance.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 36e58448-7c32-90d5-9248-2607f75ab83d
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_metric_daily.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship db1075df-e4b9-48b9-8d32-cec358b39241
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_summary.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 6bfb9594-3571-4d87-fdf3-506b8c4eaa06
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_metric_warehouse.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship c89eada5-bdf3-1bf7-949c-89a849ce1c19
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_metric_replenishment.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 4bb41e4c-38c0-4760-8259-ab52b47d61de
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_metric_liquidity.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 1a9a4a75-dde6-c6c9-95b6-d027a9f9fe07
+	relyOnReferentialIntegrity
+	fromColumn: f_simulation_output_metric_fv.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 41049efe-bb1f-e184-9488-a508e4d45304
+	relyOnReferentialIntegrity
+	fromColumn: f_sim_output_covenant_check_heat_map.simulated_abs_id
+	toColumn: d_simulated_abs.simulated_abs_id
+
+relationship 98bb8c01-64f6-6353-2562-d75d4d986516
+	fromColumn: f_simulation_output_metric_daily.simulation_date
+	toColumn: d_dates.date
+
+relationship feedb549-90ab-d835-2682-73d1837f6809
+	fromColumn: f_simulation_output_metric_portfolio_performance.simulation_date
+	toColumn: d_dates.date
+
+relationship d0428a64-745f-5e2f-9bf0-c55064877526
+	fromColumn: f_sim_output_covenant_check_heat_map.simulation_date
+	toColumn: d_dates.date
+
+relationship 95d2a136-83bb-5912-9349-a618dc79563d
+	fromColumn: f_simulation_output_metric_fv.simulation_date
+	toColumn: d_dates.date
+
+relationship 414c152b-9033-6187-4de9-947075512faf
+	fromColumn: f_simulation_output_metric_liquidity.simulation_date
+	toColumn: d_dates.date
+
+relationship 4beb7171-59de-4028-6ead-41e7408fe6cd
+	fromColumn: f_simulation_output_metric_replenishment.simulation_date
+	toColumn: d_dates.date
+
+relationship c09ecb7c-d39a-000c-f094-810a3f2e5223
+	fromColumn: f_simulation_output_metric_warehouse.simulation_date
+	toColumn: d_dates.date
+

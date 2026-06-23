@@ -1,0 +1,308 @@
+table d_simulated_abs
+	lineageTag: 5b11ca96-0e83-4106-b9c3-f56fd77c4837
+
+	column id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: babdf1cf-cf21-4774-872c-34d24df123c3
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(200)
+		lineageTag: 7f6d27da-0dca-46f0-b31d-99a9999a6558
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 19950ff2-7f0a-410d-a765-15b4855bc8a1
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulated_abs_id
+		dataType: string
+		sourceProviderType: varchar(36)
+		lineageTag: f874936b-fbb3-49ed-8ffd-3935b1915228
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_source
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: ddff2009-41e1-4778-9903-59dfdde34d05
+		summarizeBy: none
+		sourceColumn: data_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column execution_mode
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(20)
+		lineageTag: 50313076-5723-4155-9fe0-bda48a315ff7
+		summarizeBy: none
+		sourceColumn: execution_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(20)
+		lineageTag: cc7e4eff-a594-42e8-92f3-c871332c74f6
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column issuance_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: cc583bcc-38de-4bf0-b72b-48780cab6fb3
+		summarizeBy: none
+		sourceColumn: issuance_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column legal_maturity_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: dc438b91-f33d-47ce-8a5b-13056bd86cf2
+		summarizeBy: none
+		sourceColumn: legal_maturity_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column notional
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 46893ca5-7b0b-4790-b64f-66541a31735b
+		summarizeBy: sum
+		sourceColumn: notional
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column notional_currency
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(10)
+		lineageTag: e32955d2-9cf5-4ba0-83da-631076778e97
+		summarizeBy: none
+		sourceColumn: notional_currency
+
+		annotation SummarizationSetBy = Automatic
+
+	column charge_off_dpd
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 72010e86-66b6-48a4-b705-266e61dbd029
+		summarizeBy: sum
+		sourceColumn: charge_off_dpd
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_oc_ratio
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 2b3b1fe0-7dee-4c44-a689-26297a491954
+		summarizeBy: sum
+		sourceColumn: target_oc_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column replenishment_frequency
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: ed512c49-caf7-466b-96ab-afd2a33f5c84
+		summarizeBy: none
+		sourceColumn: replenishment_frequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column replenishment_target_amount
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: a490b043-cf94-423a-8141-77fb10964c47
+		summarizeBy: none
+		sourceColumn: replenishment_target_amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column replenishment_tenor_cap
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 0c16a87f-2f66-4b1e-a204-f3d57a6bfc44
+		summarizeBy: none
+		sourceColumn: replenishment_tenor_cap
+
+		annotation SummarizationSetBy = Automatic
+
+	column purchase_price_basis
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 5bf3ed85-8bcf-451a-b285-1672295fc858
+		summarizeBy: none
+		sourceColumn: purchase_price_basis
+
+		annotation SummarizationSetBy = Automatic
+
+	column warehousing_period_limit
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2c82f26b-f738-4ca6-bdb0-dfccba0f61bb
+		summarizeBy: sum
+		sourceColumn: warehousing_period_limit
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_dpd_at_purchase
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4570da00-a82b-4b76-b67c-2cc5ee25fd84
+		summarizeBy: sum
+		sourceColumn: max_dpd_at_purchase
+
+		annotation SummarizationSetBy = Automatic
+
+	column wht_rate
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: fbe831d5-efdb-4f7b-b924-7bae01eb1275
+		summarizeBy: sum
+		sourceColumn: wht_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_reserve_amount
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 71f90b82-436b-48f6-a201-7bbdfe95347b
+		summarizeBy: sum
+		sourceColumn: min_reserve_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column start_time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: b66e70de-d328-4244-803d-900f101d4f48
+		summarizeBy: none
+		sourceColumn: start_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column completed_time
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: ef377d5a-bc0d-4080-921f-7b62c7025787
+		summarizeBy: none
+		sourceColumn: completed_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_simulation_date
+		dataType: dateTime
+		formatString: yyyy-m-d
+		sourceProviderType: date
+		lineageTag: 9e310617-b731-444a-8b1f-9cf46a190441
+		summarizeBy: none
+		sourceColumn: current_simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column error_message
+		dataType: string
+		sourceProviderType: nvarchar(max)
+		lineageTag: 164fec4a-fd25-4dfe-a52d-28d8ad16b86c
+		summarizeBy: none
+		sourceColumn: error_message
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_by
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: bb5d7fca-8f7e-402f-b837-68951118c46c
+		summarizeBy: none
+		sourceColumn: created_by
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: bab80626-2120-43d5-8f72-8120595ff58f
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column update_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 9092fac6-1ed1-4168-8620-f692c4fc8972
+		summarizeBy: none
+		sourceColumn: update_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column filter_date
+		dataType: string
+		sourceProviderType: nvarchar(4000)
+		lineageTag: 97665b7d-3ba0-44a3-9353-0d97f64fe141
+		summarizeBy: none
+		sourceColumn: filter_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_simulated_abs = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="select #(lf)*,FORMAT(current_simulation_date, 'dd MMM yyyy', 'en-US') as filter_date#(lf)from pbi.dbo.simulated_abs#(lf)where status = 'COMPLETED'"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

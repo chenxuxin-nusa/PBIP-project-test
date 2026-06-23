@@ -1,0 +1,24 @@
+// 欢迎使用 DAX 查询视图!要详细了解 DAX 查询，请访问 https://aka.ms/dax-queries。
+// 右键单击数据窗格中的表、列或度量值以访问快速查询，或向 Copilot 寻求有关编写 DAX 的帮助。
+
+
+EVALUATE 
+
+VAR TEMP = 
+ADDCOLUMNS(
+            SUMMARIZE(dim_dates,dim_dates[date],dim_dates[Year-Month]),
+            "asset",
+                IF(
+                    [first_date] = dim_dates[Date],1,2
+                ),
+            "first_date",
+                CALCULATE(
+				    FIRSTNONBLANK(dim_dates[Date],[cashflow_amount]),
+				    all(dim_dates[Year]),
+                    ALL(dim_dates[Year-Month]),
+                    ALL(dim_dates[order]),
+                    ALL(dim_dates[Date])
+				)
+        )
+
+RETURN FILTER(TEMP,[asset]<>BLANK())

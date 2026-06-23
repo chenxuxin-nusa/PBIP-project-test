@@ -1,0 +1,344 @@
+table f_simulation_output_summary
+	lineageTag: d621e15b-f278-4b9f-8551-512b5568d604
+
+	column id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 817e23ad-3402-416e-a679-820092309b93
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 2876cbfd-a552-449a-94b2-2548d426d337
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_simulation_days
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9ed788df-4a49-4a86-af68-5d1d6082d7ed
+		summarizeBy: sum
+		sourceColumn: total_simulation_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_loans_purchased
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 58925caf-7211-4322-8de4-ec38268bf726
+		summarizeBy: sum
+		sourceColumn: total_loans_purchased
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_notional_purchased
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 34dd99ac-1294-43e5-bf17-38d226a545ff
+		summarizeBy: sum
+		sourceColumn: total_notional_purchased
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_collections
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 587a48aa-9650-4688-81ce-1498e540c066
+		summarizeBy: sum
+		sourceColumn: total_collections
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_defaults
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7d8a8726-dc0b-40aa-a76a-7403869df321
+		summarizeBy: sum
+		sourceColumn: total_defaults
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_default_amount
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 5d6d9314-449b-49b6-a7b0-f578e1cdd4e6
+		summarizeBy: sum
+		sourceColumn: total_default_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_charged_off
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: aac50538-ad74-4050-921b-5f3e614804fe
+		summarizeBy: sum
+		sourceColumn: total_charged_off
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_recovery_amount
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: e4962255-6681-4b99-ade5-d7b61148cca0
+		summarizeBy: sum
+		sourceColumn: total_recovery_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_loss
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: bd8fee14-c9f9-42ca-ad10-43b4045d7e67
+		summarizeBy: sum
+		sourceColumn: net_loss
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column realized_default_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 3c2f9dcc-3621-4062-9141-97961b9e4390
+		summarizeBy: sum
+		sourceColumn: realized_default_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column realized_recovery_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: bbb3b9a8-559a-4bb5-ac06-6ad4c0997a85
+		summarizeBy: sum
+		sourceColumn: realized_recovery_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column class_a_irr
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 9727c8bc-c974-4813-98b3-1ba15fe68958
+		summarizeBy: sum
+		sourceColumn: class_a_irr
+
+		annotation SummarizationSetBy = Automatic
+
+	column class_b_irr
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: e105a924-a9fe-4b30-9d13-8ef988358af2
+		summarizeBy: sum
+		sourceColumn: class_b_irr
+
+		annotation SummarizationSetBy = Automatic
+
+	column equity_irr
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: e202aaa8-2c1e-42ef-a3a1-28a385364945
+		summarizeBy: sum
+		sourceColumn: equity_irr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column weighted_average_life
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: aa0f24fa-d76d-44f9-b50a-83f79776ed40
+		summarizeBy: sum
+		sourceColumn: weighted_average_life
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column oc_breach_count
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5a135fa7-d0b2-497e-84d4-a14227a2ac83
+		summarizeBy: sum
+		sourceColumn: oc_breach_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column replenishment_failure_count
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5ffdb925-6506-405b-b416-7f9008e12534
+		summarizeBy: sum
+		sourceColumn: replenishment_failure_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column legal_maturity_unpaid
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 14f5f159-2feb-4713-8e97-b47fc8e47ff5
+		summarizeBy: sum
+		sourceColumn: legal_maturity_unpaid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column min_oc_ratio
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 4c6226ba-93cb-4708-990b-75c9b24e9806
+		summarizeBy: sum
+		sourceColumn: min_oc_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column first_oc_breach_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: e5b4f676-1f29-4b66-b928-0ba82fef296d
+		summarizeBy: none
+		sourceColumn: first_oc_breach_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_replenishment_requested
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 55637a54-8fe8-4895-a1bb-d633a86aa292
+		summarizeBy: sum
+		sourceColumn: total_replenishment_requested
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_replenishment_fulfilled
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: c738734c-4c6a-40f3-ba56-1b8a760e3909
+		summarizeBy: sum
+		sourceColumn: total_replenishment_fulfilled
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_replenishment_shortfall
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: fbd39d5f-fb11-41d1-8a0c-4aab35ea37f7
+		summarizeBy: sum
+		sourceColumn: total_replenishment_shortfall
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_deferred_interest_a
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 7c64b847-121f-43ec-b6f5-d80a0c3d7532
+		summarizeBy: sum
+		sourceColumn: max_deferred_interest_a
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column max_deferred_interest_b
+		dataType: double
+		sourceProviderType: decimal(28, 2)
+		lineageTag: 4d9058ac-2897-43ae-9a79-1ec5e837ee3a
+		summarizeBy: sum
+		sourceColumn: max_deferred_interest_b
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column equity_multiple
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 3941a937-5637-4b57-adde-5f7b62b6e02f
+		summarizeBy: sum
+		sourceColumn: equity_multiple
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column wal_a
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 2317c28f-2460-4b5f-b2a4-5c229da3a8c8
+		summarizeBy: sum
+		sourceColumn: wal_a
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column wal_b
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 34495e7d-b4c1-43c7-a54f-3370d16b8fed
+		summarizeBy: sum
+		sourceColumn: wal_b
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 48d0ba96-0e9e-491c-80cf-7f9aae13ea7f
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_summary = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="select * from pbi.dbo.simulation_output_summary;"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

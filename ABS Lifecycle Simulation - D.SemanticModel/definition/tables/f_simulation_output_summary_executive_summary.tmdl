@@ -1,0 +1,82 @@
+table f_simulation_output_summary_executive_summary
+	lineageTag: af9505c1-77bb-4ac1-823c-b6c84fe640bd
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 523ee9fe-a567-4954-86cf-fab963644e4f
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(27)
+		lineageTag: 0872877b-68b9-4e87-a3d2-8082af03dcce
+		summarizeBy: none
+		sourceColumn: metric
+		sortByColumn: sort_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(5)
+		lineageTag: 7558c504-1f77-4e68-9977-74f4c0569d55
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: c754f518-4ef5-4b77-9d7d-89814d151207
+		summarizeBy: sum
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column sort_order
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: a88a6067-7b8d-43b7-8906-f1edda473193
+		summarizeBy: sum
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: a98de188-ee9f-491a-9f5d-cfadc718434f
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_summary_executive_summary = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_summary_executive_summary"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

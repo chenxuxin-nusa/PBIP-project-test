@@ -1,0 +1,14 @@
+expression Server = "tcp:127.0.0.1,5556" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: fe1b12d3-3abe-4060-bb1f-fca9ccc1f1f3
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Database = "pbi" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 42b0a6ff-cf65-487d-962f-f721065a89e1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

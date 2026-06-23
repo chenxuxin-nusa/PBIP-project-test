@@ -1,0 +1,91 @@
+table d_abs_trache
+	lineageTag: 57dca8bf-b696-4aea-a774-05d5b2051d4a
+
+	column id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 793b26b0-202f-499e-9daa-df782d276831
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: edd87ac6-c06e-460d-a994-773f4d6cdb40
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tranche
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(20)
+		lineageTag: 83c0aadc-d530-40c5-95c2-e63ab93091cc
+		summarizeBy: none
+		sourceColumn: tranche
+
+		annotation SummarizationSetBy = Automatic
+
+	column tranche_notional
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(28, 2)
+		lineageTag: ceed5a6b-8308-4685-a73a-b2166fb8f987
+		summarizeBy: sum
+		sourceColumn: tranche_notional
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column fixed_coupon_rate
+		dataType: double
+		isNullable: false
+		sourceProviderType: decimal(28, 9)
+		lineageTag: abd5b7c6-3902-4990-986b-f27cc5a98fa8
+		summarizeBy: sum
+		sourceColumn: fixed_coupon_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sort_order
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8ade7118-cbc2-4abb-989c-ac79a998f875
+		summarizeBy: sum
+		sourceColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 76f07f8d-8229-48cb-82a4-4dbb1c3eb1ed
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_abs_trache = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="select * from pbi.dbo.simulated_abs_tranche;"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

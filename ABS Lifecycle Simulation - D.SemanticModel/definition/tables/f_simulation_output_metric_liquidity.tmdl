@@ -1,0 +1,163 @@
+table f_simulation_output_metric_liquidity
+	lineageTag: c7c80c11-9647-4212-89c7-95a253b362f2
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 36243944-fae2-494f-becd-7caa9ac8a421
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulation_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 6bf94d0b-5973-4208-b163-895793021f96
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column oc_ratio
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 480a1362-9f46-44b4-a7e4-4493308660cd
+		summarizeBy: sum
+		sourceColumn: oc_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column oc_breach
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: c18c8dff-88d3-4d3e-b3d2-fe7ea4b81f03
+		summarizeBy: sum
+		sourceColumn: oc_breach
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column target_oc
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: c7714051-5b96-422b-ae34-d3af9be582c6
+		summarizeBy: sum
+		sourceColumn: target_oc
+
+		annotation SummarizationSetBy = Automatic
+
+	column reserve_balance
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: cb1ee1fb-8d83-40d6-bebe-3fbed39f3233
+		summarizeBy: sum
+		sourceColumn: reserve_balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column min_reserve
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 2)
+		lineageTag: a6b11247-5d75-4de8-87c0-41d1e692a989
+		summarizeBy: sum
+		sourceColumn: min_reserve
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column spv_cash_balance
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 88237cf2-ac5a-4a4d-9deb-cecd2d861a3b
+		summarizeBy: sum
+		sourceColumn: spv_cash_balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column class_a_outstanding
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 062427d4-5af0-45de-b88d-dc0239066a64
+		summarizeBy: sum
+		sourceColumn: class_a_outstanding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column class_b_outstanding
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: e424601a-7a1d-4722-800f-0c1e390731b0
+		summarizeBy: sum
+		sourceColumn: class_b_outstanding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column deferred_int_a
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 05561ccf-d234-4ea0-aa2a-6847e92ca651
+		summarizeBy: sum
+		sourceColumn: deferred_int_a
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column deferred_int_b
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: c62a21f6-e827-4025-b760-d3fc8601ef3e
+		summarizeBy: sum
+		sourceColumn: deferred_int_b
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 830b39e8-6d3a-4bf4-a1b1-c6a13ad75bad
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_metric_liquidity = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_metric_liquidity"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+createOrReplace
+
+	ref table measure
+
+		measure first_date =
+				
+				CALCULATE(
+				    FIRSTNONBLANK(dim_dates[Date],[cashflow_amount]),
+				    all(dim_dates[Year]),
+                    ALL(dim_dates[Year-Month]),
+                    ALL(dim_dates[order])
+				)
+			formatString: General Date
+			displayFolder: measure\base
+			lineageTag: 4b3c26f7-f3dd-4175-a4f2-cabc80ed8462
+

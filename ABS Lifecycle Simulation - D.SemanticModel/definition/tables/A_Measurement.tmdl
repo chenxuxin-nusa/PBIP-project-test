@@ -1,0 +1,276 @@
+table A_Measurement
+	lineageTag: 23614d66-8f23-47f3-a6ff-1ab5958833c6
+
+	measure Metric_Value = sum(f_simulation_output_summary_executive_summary[value])
+		formatString: #,0
+		displayFolder: Executive Summary\Executive Summary_
+		lineageTag: 8efaf8a2-94ff-4e79-bc5f-6ab5d6163c6a
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure OC_Breach = SUM(f_simulation_output_metric_liquidity[oc_breach])
+		formatString: #,0
+		displayFolder: Liquidity & OC
+		lineageTag: b0010001-0001-4001-8001-000000000002
+
+	measure text_maturity_date = "Maturity Date : " & FORMAT(min('d_simulated_abs'[legal_maturity_date]),"dd MMM yyyy")
+		displayFolder: Executive Summary\text
+		lineageTag: 3580b679-9c6e-483b-b81d-2b65e9ed190c
+
+	measure 'text_Issuance Date' = "Issuance Date : " & FORMAT(max(d_simulated_abs[issuance_date]),"dd MMM yyyy")
+		displayFolder: Executive Summary\text
+		lineageTag: ffd1915c-941e-4f6c-a1a0-10e86646b732
+
+	measure text_abs_notional = "Notional : USD  " & FORMAT(max(d_simulated_abs[notional]),"#,##")
+		displayFolder: Executive Summary\text
+		lineageTag: a83b585a-e3b0-4fc1-a329-086ce98e7e0b
+
+	measure 'text_Data Source' = "Data Source : "&max(d_simulated_abs[data_source])
+		displayFolder: Executive Summary\text
+		lineageTag: 345bd583-1958-494c-90c7-539cd96dc8b6
+
+	measure Daily_metrics = ```
+			
+			
+			    var level_1 = SELECTEDVALUE(f_simulation_output_metric_daily[category])
+			    var level_2 = SELECTEDVALUE(f_simulation_output_metric_daily[metric_label])
+			    var metric_ = [daily_metric_base]
+			    RETURN 
+			        SWITCH(TRUE(),
+			            level_2 in {"Performing Balance","Total Outstanding","Reserve Balance","SPV Cash Balance","Daily Collections","Daily Cash Out","WH Balance","WH Eligible","WH New Bookings","WH New Amount"} , FORMAT(metric_,"#,##0"),
+			            FORMAT(metric_,"0.00%")
+			        )
+			```
+		displayFolder: Daily Metrics
+		lineageTag: 38a74318-444a-4b2e-9db3-36d40417b2b0
+
+	measure cond_Equity_IRR =
+			
+			SWITCH(TRUE(),
+			    [Metric_Equity_Multiple]>=0.1,"#00C800",
+			    [Metric_Equity_Multiple]>=0.05,"#FF9F1C",
+			    "#C80000"
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: 0d6ba34e-2ac5-4f60-9e5c-29b551f675ab
+
+	measure Equity_IRR_ = sum(f_simulation_output_summary[equity_irr])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Executive Summary\cards
+		lineageTag: e73763a6-44de-43fb-be3d-204d869a2bd8
+
+	measure Min_OC_Ratio = sum(f_simulation_output_summary[min_oc_ratio])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Executive Summary\cards
+		lineageTag: d4ca532a-36c8-465a-b8d9-5fc5646cbad8
+
+	measure cond_Min_OC_Ratio =
+			
+			VAR target_oc_ratio_ = MIN(d_simulated_abs[target_oc_ratio])
+			RETURN
+			SWITCH(TRUE(),
+			    [Min_OC_Ratio]>=target_oc_ratio_,"#00C800",
+			    "#C80000"
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: f6b0e898-3448-4dda-a9b4-77419b4b32e3
+
+	measure OC_Breach_Days_ = SUM(f_simulation_output_summary[oc_breach_count])
+		formatString: 0
+		displayFolder: Executive Summary\cards
+		lineageTag: b93958a4-40c3-440e-a5b2-cc05a215c80c
+
+	measure cond_OC_Breach_days =
+			
+			SWITCH(TRUE(),
+			    [OC_Breach_Days_]>10,"#C80000",
+			    [OC_Breach_Days_]>=1,"#FF9F1C",
+			    "#00C800"
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: c0d293bd-1ea3-49c4-98d6-60b4fdbac5c5
+
+	measure Default_Rate_ = sum(f_simulation_output_summary[realized_default_rate])
+		formatString: 0
+		displayFolder: Executive Summary\cards
+		lineageTag: 06e32d43-24fb-4f11-8c58-de448f097cd7
+
+	measure cond_Default_Rate =
+			
+			SWITCH(TRUE(),
+			    [Default_Rate_]>0.1,"#C80000",
+			    [Default_Rate_]>0.5,"#FF9F1C",
+			    "#00C800"
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: d262c349-4e06-448f-bed9-a3f19a27fe51
+
+	measure Recovery_Rate_ = sum(f_simulation_output_summary[realized_recovery_rate])
+		formatString: 0
+		displayFolder: Executive Summary\cards
+		lineageTag: 353dc9b1-5fb4-4ec4-92d8-725917b1e8b2
+
+	measure cond_reconvery_Rate =
+			
+			SWITCH(TRUE(),
+			    [Default_Rate_]>=0.25,"#00C800",
+			    [Default_Rate_]>=0.15,"#FF9F1C",
+			    "#C80000"
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: 024d38f4-67b9-45e5-b93b-cf9713158c74
+
+	measure cond_OC_Breach =
+			
+			if([OC_Breach] >=1,"#C80000")
+		displayFolder: Liquidity & OC
+		lineageTag: 1ace1eb6-b7b3-4fc1-bdd6-cae717825b95
+
+	measure cond_color = ```
+			
+			var actual_ = [actual_values]
+			var threshold = max(f_sim_output_covenant_check_heat_map[threshold])
+			return
+			IF(
+			    ISBLANK(actual_)||SELECTEDVALUE(f_sim_output_covenant_check_heat_map[covenant_rule]) in {"Total Breaches","Breach Days in Month"},
+			    BLANK(),
+			    if(
+			        values(f_sim_output_covenant_check_heat_map[operator]) = ">=",
+			        if(
+			            actual_>=threshold,
+			            "green",
+			            "#C80000"
+			        ),
+			        if(
+			            actual_<=threshold,
+			            "green",
+			            "#C80000"
+			        )   
+			    )
+			)
+			```
+		displayFolder: Risk Covenants
+		lineageTag: 2abc737b-fb47-454f-a83f-8a91f9ff42d3
+
+	measure actual_values = ```
+			sum(f_sim_output_covenant_check_heat_map[actual_value])
+			
+			```
+		displayFolder: Risk Covenants
+		lineageTag: 58573332-1cdb-4e55-8b4f-e34f1606c42a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure cond_actual_value =
+			
+			IF(
+			    ISBLANK([actual_values]),
+			    BLANK(),
+			    IF(
+			        SELECTEDVALUE(f_sim_output_covenant_check_heat_map[covenant_rule]) in {"Breach Days in Month","Total Breaches"},
+			        FORMAT([actual_values],"#,##0"),
+			        FORMAT([actual_values],"0.00%")
+			    )
+			)
+		displayFolder: Risk Covenants
+		lineageTag: 3bcb3911-a07c-4753-a639-238cb36bf3ae
+
+	measure text_scenario_name = max(d_simulated_abs[name])
+		displayFolder: Executive Summary\text
+		lineageTag: 225a1691-f406-4c16-9e59-ee9b73b07bee
+
+	measure cond_class_a_irr =
+			
+			var class_a_irr = sum(f_simulation_output_summary[class_a_irr])
+			var target = CALCULATE(sum(d_abs_trache[fixed_coupon_rate]),d_abs_trache[tranche] = "CLASS_A")
+			RETURN
+			SWITCH(TRUE(),
+			    class_a_irr>=target,"#00C800",
+			    class_a_irr<target,"#C80000",
+			    BLANK()
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: ad7314f9-0e9c-4d16-a55a-79dc57079da0
+
+	measure cond_class_b_irr =
+			
+			var class_b_irr = sum(f_simulation_output_summary[class_b_irr])
+			var target = CALCULATE(sum(d_abs_trache[fixed_coupon_rate]),d_abs_trache[tranche] = "CLASS_B")
+			RETURN
+			SWITCH(TRUE(),
+			    class_b_irr>=target,"#00C800",
+			    class_b_irr<target,"#C80000",
+			    BLANK()
+			)
+		displayFolder: Executive Summary\cards
+		lineageTag: a36a818b-520f-49e8-9952-93d086ad5841
+
+	measure card_net_loss = FORMAT(sum(f_simulation_output_summary[net_loss]),"#,##0")
+		displayFolder: Executive Summary\cards
+		lineageTag: 4a241906-3fac-4785-8a92-ea1b61757148
+
+	measure daily_metric_base = sum(f_simulation_output_metric_daily[metric_value])
+		displayFolder: Daily Metrics
+		lineageTag: ab3847ab-a6e1-45ac-89b0-f0187af4dcae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Metric_Equity_Multiple = MAX(f_simulation_output_summary[equity_multiple])
+		displayFolder: Executive Summary\Executive Summary_
+		lineageTag: 30f95d26-ca39-4b3a-b29b-71e3a6b19155
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Metric_Value_Format =
+			
+			var metric_value = [Metric_Value]
+			return
+			if(
+			    SELECTEDVALUE(f_simulation_output_summary_executive_summary[metric]) in {"WAL Class A","WAL Class B","Equity Multiple"},FORMAT(metric_value,"0.00"),
+			    FORMAT(metric_value,"#,##0")
+			)
+		displayFolder: Executive Summary\Executive Summary_
+		lineageTag: 9299a359-a792-4dc4-a94f-4c3f4b559d85
+
+	measure OC_Ratio =
+			CALCULATE(
+			    SUM(f_simulation_output_metric_daily[metric_value]),
+			    f_simulation_output_metric_daily[metric_label] = "OC Ratio"
+			)
+		formatString: 0
+		displayFolder: Daily Metrics
+		lineageTag: a4eb21d5-99a2-4b5e-adc3-5f0d884bef17
+
+	measure Target_OC = ```
+			
+			
+			    SUM(d_simulated_abs[target_oc_ratio])
+			
+			```
+		displayFolder: Daily Metrics
+		lineageTag: bf5327a2-0ef3-4615-bb30-ed08d3d5b111
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'OC Ratio vs Target (110%)' = ```
+			"OC Ratio vs Target " & "(" & FORMAT([Target_OC],"0%") & ")"
+			
+			```
+		displayFolder: Daily Metrics
+		lineageTag: bb3e64b0-72e0-433e-a320-4b1c4e6d9296
+
+	column Value
+		isHidden
+		lineageTag: be3727d0-0bec-4ad9-84f1-0ce6d53dc836
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition A_Measurement = calculated
+		mode: import
+		source = {"0"}
+
+	annotation PBI_Id = ece4835bfb294e91b8887b811f061d89
+

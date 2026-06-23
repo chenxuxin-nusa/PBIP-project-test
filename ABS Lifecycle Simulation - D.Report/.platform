@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "ABS Lifecycle Simulation - D"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e8b9c85a-465f-4c0f-ae61-7578f8a227d6"
+  }
+}

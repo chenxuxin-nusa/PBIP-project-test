@@ -1,0 +1,106 @@
+table f_simulation_output_metric_daily
+	lineageTag: c3d9d9d3-87eb-456c-93c8-b026a2a40d47
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 7437493c-13b4-45d7-9ea3-71e4c57f0b4b
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(50)
+		lineageTag: 9a8e4f82-39be-4972-a1ae-3e17eec7f0ee
+		summarizeBy: none
+		sourceColumn: category
+		sortByColumn: category_sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_label
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(100)
+		lineageTag: 80dd3808-b701-4865-9977-a2cf1a9eb461
+		summarizeBy: none
+		sourceColumn: metric_label
+		sortByColumn: metric_sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_value
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: faf68e05-f8e5-40b0-a4f2-dee8b4a54831
+		summarizeBy: sum
+		sourceColumn: metric_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column category_sort
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 72df55fe-e75f-4458-b566-5920662f4665
+		summarizeBy: sum
+		sourceColumn: category_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_sort
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4c53bf3a-b7e6-4a73-8d98-ec9ae58a22a3
+		summarizeBy: sum
+		sourceColumn: metric_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 6c1a85fb-18ac-4f20-a253-b01f12abdeca
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulation_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 875a6c29-00ab-4249-9e50-89dc4abc622d
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_metric_daily = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_metric_daily"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

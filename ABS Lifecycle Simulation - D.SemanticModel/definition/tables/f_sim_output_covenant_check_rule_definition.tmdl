@@ -1,0 +1,91 @@
+table f_sim_output_covenant_check_rule_definition
+	lineageTag: 2ebf64fc-80af-442f-a79e-fbdab46f83f7
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: d5c1ae4e-3ddc-468f-84ab-aa0e45333d4f
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_id
+		dataType: string
+		sourceProviderType: varchar(36)
+		lineageTag: 888aeb0b-18a7-4ffb-826b-55a6ac4f6519
+		summarizeBy: none
+		sourceColumn: rule_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		sourceProviderType: nvarchar(250)
+		lineageTag: 09cd5a26-96cc-4950-8340-37cffbaaa3b9
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_type
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 6a259526-77d4-42ab-80fe-08b42522121d
+		summarizeBy: none
+		sourceColumn: rule_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column operator
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 3aaf8314-d30b-42c3-8287-0455383b1c0e
+		summarizeBy: none
+		sourceColumn: operator
+
+		annotation SummarizationSetBy = Automatic
+
+	column threshold
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 560100ba-a6c7-4986-99b3-d60ca992128e
+		summarizeBy: sum
+		sourceColumn: threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column scope
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 2fa0ab46-95f3-49fa-b5a6-9263947a50f9
+		summarizeBy: none
+		sourceColumn: scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 66b88f7a-59a2-48ba-b4be-4542cbf04250
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_sim_output_covenant_check_rule_definition = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.sim_output_covenant_check_rule_definition"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,187 @@
+table f_simulation_output_metric_portfolio_performance
+	lineageTag: 80156110-3369-4b23-92c0-553647bec14f
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 2af483fa-db5a-48a4-b354-c7e4a66c0453
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column performing_balance
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 1438c1cf-66ca-4a0f-a8d1-f965b18f7a62
+		summarizeBy: sum
+		sourceColumn: performing_balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column total_outstanding
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 70873898-460c-4e4b-905b-b037e34684ea
+		summarizeBy: sum
+		sourceColumn: total_outstanding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column default_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 4add4339-2337-4f36-b70d-727affd07fbd
+		summarizeBy: sum
+		sourceColumn: default_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column recovery_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: c4378892-3bc9-4ca6-bfd1-b02a5dd90d77
+		summarizeBy: sum
+		sourceColumn: recovery_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column delinquency_ratio
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: fce6f244-3204-4163-83bc-4748470e44c7
+		summarizeBy: sum
+		sourceColumn: delinquency_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+	column dpd_1_30
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 7dc3eab5-c8ed-4e8b-9559-02645c7e034f
+		summarizeBy: sum
+		sourceColumn: dpd_1_30
+
+		annotation SummarizationSetBy = Automatic
+
+	column dpd_31_60
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 3903bde8-d5ec-43f7-8f03-c1e6f96f3b35
+		summarizeBy: sum
+		sourceColumn: dpd_31_60
+
+		annotation SummarizationSetBy = Automatic
+
+	column dpd_61_90
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 98503709-8efc-4e24-a247-d9d9c2f7b376
+		summarizeBy: sum
+		sourceColumn: dpd_61_90
+
+		annotation SummarizationSetBy = Automatic
+
+	column dpd_90_plus
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 872cc11f-dbfa-47ad-8a62-45c3fbe9a85e
+		summarizeBy: sum
+		sourceColumn: dpd_90_plus
+
+		annotation SummarizationSetBy = Automatic
+
+	column cumulative_defaults
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 23e5b93b-7cf8-4b5e-8cea-77cfe1512a29
+		summarizeBy: sum
+		sourceColumn: cumulative_defaults
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cumulative_recoveries
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: c5a70c8f-8518-4df4-9b01-e9687db4e64b
+		summarizeBy: sum
+		sourceColumn: cumulative_recoveries
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column net_loss
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(29, 9)
+		lineageTag: 3c8abfe9-1132-4d0c-bfee-c1ac971ef945
+		summarizeBy: sum
+		sourceColumn: net_loss
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column simulation_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f8095e2c-cf3f-443b-8e73-7948defd1d43
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 332d7dc3-4489-458b-ba3b-7d11fec6eb80
+		summarizeBy: sum
+		sourceColumn: month_
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f8e2743c-bc7b-4d0c-b9df-c7bc8a05d3f5
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_metric_portfolio_performance = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_metric_portfolio_performance"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

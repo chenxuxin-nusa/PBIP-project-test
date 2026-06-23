@@ -1,0 +1,94 @@
+table f_simulation_output_metric_fv
+	lineageTag: 456a7ea6-096b-4e80-95ef-8ba9ffbb80ed
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 000971db-47b8-4a95-9398-8d4f421fe20f
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulation_date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: c14103df-8b00-406d-85ce-f33d2626f3fd
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_line
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 8369b17f-dc1e-44d4-9475-e4c102cab48c
+		summarizeBy: none
+		sourceColumn: product_line
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenor
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: a9bed70b-6919-4e4b-9adb-63d8a3c6ae82
+		summarizeBy: none
+		sourceColumn: tenor
+
+		annotation SummarizationSetBy = Automatic
+
+	column dpd_bucket
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: 0324cfcb-0523-41a4-8d75-835d62a100d5
+		summarizeBy: none
+		sourceColumn: dpd_bucket
+
+		annotation SummarizationSetBy = Automatic
+
+	column expected_loss_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 5c78bbce-7566-42d0-abd8-34a64e84bfa3
+		summarizeBy: sum
+		sourceColumn: expected_loss_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount_rate
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 15801fb6-4289-4d25-802c-a380da0120d6
+		summarizeBy: sum
+		sourceColumn: discount_rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 49b2707a-55d0-40a0-84f7-ce7dee45fd02
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_metric_fv = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_metric_fv"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

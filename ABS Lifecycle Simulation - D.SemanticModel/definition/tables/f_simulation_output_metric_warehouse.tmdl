@@ -1,0 +1,142 @@
+table f_simulation_output_metric_warehouse
+	lineageTag: 5d7ae965-a4a5-4b86-906a-cc9601ffbce9
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: ecf82f04-778a-4844-952c-175973242b8d
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulation_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 2ef81e91-7363-4026-9359-969a71593a56
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_bookings_count
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(38, 9)
+		lineageTag: 67305d8c-8cec-4216-8da7-0b82cb161640
+		summarizeBy: sum
+		sourceColumn: new_bookings_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column new_bookings_amount
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(38, 9)
+		lineageTag: a09dea53-4810-42fb-8b98-59f02a3b6d6c
+		summarizeBy: sum
+		sourceColumn: new_bookings_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column total_warehouse_balance
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 620934b3-2bfc-4304-8a4c-c116f24c60d9
+		summarizeBy: sum
+		sourceColumn: total_warehouse_balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column total_loan_count
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: d2e7f53c-62d8-48e3-a7c9-c15fde5e8eaf
+		summarizeBy: sum
+		sourceColumn: total_loan_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column eligible_balance
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: a7064745-386e-4a0b-b054-67174749f432
+		summarizeBy: sum
+		sourceColumn: eligible_balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column chargeoff_count
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(38, 9)
+		lineageTag: b0caad20-a0ef-40db-a75a-7ef1d334cc9a
+		summarizeBy: sum
+		sourceColumn: chargeoff_count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column chargeoff_amount
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(38, 9)
+		lineageTag: 713f45b5-32ed-4de5-92fe-78674373041d
+		summarizeBy: sum
+		sourceColumn: chargeoff_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column cumulative_chargeoffs
+		dataType: double
+		formatString: #,0
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 122b7e24-42f6-4a5e-9a29-60e4e79984d9
+		summarizeBy: sum
+		sourceColumn: cumulative_chargeoffs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: d76981fc-65df-4efc-b149-3ed1c9038c1d
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_simulation_output_metric_warehouse = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_metric_warehouse"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

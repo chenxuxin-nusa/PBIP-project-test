@@ -1,0 +1,31 @@
+model Model
+	culture: zh-CN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: zh-CN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Server","Database","d_simulated_abs","d_abs_trache","f_simulation_output_summary","f_simulation_output_summary_executive_summary","f_simulation_output_metric_portfolio_performance","f_simulation_output_metric_liquidity","f_simulation_output_metric_replenishment","f_simulation_output_metric_warehouse","f_sim_output_covenant_check_rule_definition","f_sim_output_covenant_check_heat_map","f_simulation_output_metric_daily","f_simulation_output_metric_fv","d_dates"]
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","TMDLView_Desktop","DevMode"]
+
+ref table A_Measurement
+ref table f_simulation_output_summary_executive_summary
+ref table f_simulation_output_metric_portfolio_performance
+ref table f_simulation_output_metric_liquidity
+ref table f_simulation_output_metric_replenishment
+ref table f_simulation_output_metric_warehouse
+ref table f_sim_output_covenant_check_heat_map
+ref table f_sim_output_covenant_check_rule_definition
+ref table d_simulated_abs
+ref table d_abs_trache
+ref table f_simulation_output_summary
+ref table f_simulation_output_metric_daily
+ref table f_simulation_output_metric_fv
+ref table d_dates
+
+ref cultureInfo zh-CN
+

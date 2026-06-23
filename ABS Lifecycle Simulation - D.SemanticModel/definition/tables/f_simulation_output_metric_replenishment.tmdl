@@ -1,0 +1,81 @@
+table f_simulation_output_metric_replenishment
+	lineageTag: 28e86bc8-caea-4845-922c-fb3b599d1f80
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: d1f522a0-0eea-4d9d-bc60-25a9dba7528e
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulation_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: adaf6648-6d09-4f2b-8239-df2ff8e0db5a
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: b5e70331-99a0-47ea-b469-6e47d813bdcf
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_name
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(100)
+		lineageTag: 59374311-5607-43c9-b941-ce4e245f894a
+		summarizeBy: none
+		sourceColumn: metric_name
+		sortByColumn: metric_name_sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_name_sort
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 031e2702-3f6a-43ec-9b17-3486dc3b1c28
+		summarizeBy: sum
+		sourceColumn: metric_name_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column metric_value
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 23911e8a-9ab7-4daa-b6b8-f455ef52e4e2
+		summarizeBy: sum
+		sourceColumn: metric_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition f_simulation_output_metric_replenishment = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.simulation_output_metric_replenishment"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

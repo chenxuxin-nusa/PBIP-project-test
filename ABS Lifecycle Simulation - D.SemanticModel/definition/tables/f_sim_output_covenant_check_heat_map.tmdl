@@ -1,0 +1,122 @@
+table f_sim_output_covenant_check_heat_map
+	lineageTag: e3079899-e241-4842-b757-9e9f41b73a3e
+
+	column simulated_abs_id
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(36)
+		lineageTag: 4af8fc7f-772b-4e81-a105-3787f53e3b33
+		summarizeBy: none
+		sourceColumn: simulated_abs_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column covenant_rule
+		dataType: string
+		sourceProviderType: nvarchar(250)
+		lineageTag: 250518a6-7c74-4ec7-8edf-738689a7dd10
+		summarizeBy: none
+		sourceColumn: covenant_rule
+		sortByColumn: covenant_rule_sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column threshold
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 302e4e6b-1dba-48b0-9770-93e5f305b85f
+		summarizeBy: sum
+		sourceColumn: threshold
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_value
+		dataType: double
+		sourceProviderType: decimal(28, 9)
+		lineageTag: 5b4036ae-43a9-4c41-95a9-f5621624c510
+		summarizeBy: sum
+		sourceColumn: actual_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column operator
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 3145d86c-2e2e-4492-9e46-d3bc670171b1
+		summarizeBy: none
+		sourceColumn: operator
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulation_date
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 176af0f3-b15d-4569-b37e-542c9df23c3b
+		summarizeBy: none
+		sourceColumn: simulation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 92fb2c63-e3c9-4523-9330-261e06db48a8
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_id
+		dataType: string
+		sourceProviderType: varchar(36)
+		lineageTag: 239960f7-2d48-4baa-8cc5-fcb135649313
+		summarizeBy: none
+		sourceColumn: rule_id
+		sortByColumn: rule_id_sort
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule_id_sort
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d2892538-6086-480e-9193-8223a5afd3fa
+		summarizeBy: sum
+		sourceColumn: rule_id_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column covenant_rule_sort
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 37b6dd1d-1b7f-4c5a-a2b5-0032c8ce9625
+		summarizeBy: sum
+		sourceColumn: covenant_rule_sort
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_sim_output_covenant_check_heat_map = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="SELECT * FROM pbi.dbo.sim_output_covenant_check_heat_map"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

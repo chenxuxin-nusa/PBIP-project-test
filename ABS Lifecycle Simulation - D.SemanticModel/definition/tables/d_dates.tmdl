@@ -1,0 +1,108 @@
+table d_dates
+	lineageTag: b5a041db-d3c6-4d1d-adbb-ecedbd24460c
+
+	column date
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 43355527-916e-49d1-a68a-55aeb42bb6c4
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	column endofmonth
+		dataType: boolean
+		isNullable: false
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 5cf503a7-9be4-45b1-85ed-543c7e781ebd
+		summarizeBy: none
+		sourceColumn: endofmonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column dashboard_month
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(10)
+		lineageTag: d7618aee-ef0e-4fff-8b2c-501015bbf312
+		summarizeBy: none
+		sourceColumn: dashboard_month
+		sortByColumn: yearmonth
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column yearmonth
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3dc766f9-dadc-4ca9-819d-014926d2fb5d
+		summarizeBy: sum
+		sourceColumn: yearmonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_flag
+		dataType: boolean
+		isNullable: false
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 7a6a82c2-c5ca-4d45-b494-11f8d3f7b95e
+		summarizeBy: none
+		sourceColumn: week_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column dashboard_week
+		dataType: string
+		isNullable: false
+		sourceProviderType: varchar(15)
+		lineageTag: 1ed7fef9-a554-4405-9a9a-d2b4f6702a09
+		summarizeBy: none
+		sourceColumn: dashboard_week
+		sortByColumn: date
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column create_time
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 179e2eb1-5647-4bab-8024-81bd18febbaf
+		summarizeBy: none
+		sourceColumn: create_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		isNullable: false
+		sourceProviderType: int
+		lineageTag: 0f36714e-bd86-4674-970e-c7e2025e2fab
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition d_dates = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database(Server, Database, [Query="select * from pbi.dbo.simulation_date"])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
